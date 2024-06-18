@@ -4,6 +4,7 @@ import MoviesPage from "./pages/MoviesPage"
 import Navbar from "./components/Navbar/Navbar.jsx"
 
 
+
 function App() {
 
   return (
