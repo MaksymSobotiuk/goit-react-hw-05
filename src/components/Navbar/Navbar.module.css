@@ -1,0 +1,20 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(118, 185, 154);
+    border: 1px solid transparent;
+    border-radius: 24px;
+    padding: 10px
+}
+
+.isActive {
+    background-color: rgb(227, 147, 147);
+}
