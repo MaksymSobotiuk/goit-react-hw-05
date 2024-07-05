@@ -10,14 +10,17 @@ function HomePage() {
 
     useEffect(() => {
         const getMovies = async () => {
-            try {
+          try {
+               setIsLoading(true)
                   const data = await GetMovies();
-                setMovies(data)       
+                setMovies(data) 
+               
             } catch (error) {
                 setError(true)
             } finally {
-                  setIsLoading(true)
-        }
+                  setIsLoading(false)
+            }
+    
     }
         getMovies();
     }, []);
@@ -25,7 +28,8 @@ function HomePage() {
     return (
      <div>
       <h1> Trending today</h1>
-      <MoviesList movies={movies} />
+            <MoviesList movies={movies} />
+             {isloading && <p>Loading...</p>}
     </div>
   );
 };
