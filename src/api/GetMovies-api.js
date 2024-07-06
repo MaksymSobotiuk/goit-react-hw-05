@@ -27,5 +27,5 @@ export const GetSingleMovie = async (movieId) => {
     },
   });
 
-  return response.data.results;
+  return response.data;
 };
