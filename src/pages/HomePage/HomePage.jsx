@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { GetMovies } from "../api/GetMovies-api";
-import MoviesList from "../components/MovieList/MoviesList";
+import { GetMovies } from "../../api/GetMovies-api";
+import MoviesList from "../../components/MovieList/MoviesList";
 
 
 function HomePage() {

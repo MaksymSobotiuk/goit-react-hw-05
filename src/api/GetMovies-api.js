@@ -52,3 +52,17 @@ export const GetMovieReviews = async (movieId) => {
 
   return response.data;
 };
+
+
+export const searchMovieByName = async movieFilter => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?query=${movieFilter}&include_adult=false&language=en-US&page=1`,
+    {
+    params: { client_id: key },
+    headers: {
+      Authorization: `Bearer ${autorizationKey}`,
+    },
+  });
+  return response.data.results;
+};
+

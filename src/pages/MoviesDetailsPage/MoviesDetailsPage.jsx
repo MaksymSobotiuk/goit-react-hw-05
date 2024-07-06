@@ -1,13 +1,15 @@
 import { useEffect, useState,  useRef } from "react";
-import { useParams, Link, Outlet } from "react-router-dom"
-import { GetSingleMovie} from "../api/GetMovies-api";
+import { useParams, Link, Outlet, useLocation, NavLink } from "react-router-dom"
+import { GetSingleMovie } from "../../api/GetMovies-api";
+import css from "./MoviesDetailsPage.module.css"
 
 function MoviesDetailsPage() {
     const { movieId } = useParams();
- const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState(null);
     const [isloading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
-    const goBack = useRef(location.state ?? '/movies');
+    const location = useLocation()
+    const backLocation = useRef(location.state ?? '/movies');
 
     useEffect(() => {
         const getData = async () => {
@@ -26,11 +28,17 @@ function MoviesDetailsPage() {
     }, [movieId]);
 
 
+
+    // console.log(location);
+
+
     return (
         
-        <div>   <Link to={goBack.current}>
-        Go back
-      </Link> {movie && (
+        <div>
+            
+            <Link to={backLocation.current} > Go back</Link>
+            
+            {movie && (
             <div>
  
                  <img
@@ -43,9 +51,9 @@ function MoviesDetailsPage() {
           />
              <h4>{movie.title}</h4>
                     <p>Overview: {movie.overview}</p>
-                    <nav>
-                        <Link to='cast'>cast</Link>
-                        <Link to='reviews'>reviews</Link>
+                    <nav className={css.navContainer}>
+                            <NavLink to='cast'>cast</NavLink>
+                            <NavLink to='reviews'>reviews</NavLink>
                     </nav>
                     <Outlet></Outlet>
 
@@ -60,7 +68,7 @@ function MoviesDetailsPage() {
 
 
 
-
+NavLink
 
 
 
