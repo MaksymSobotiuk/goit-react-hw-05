@@ -4,6 +4,7 @@ import MoviesPage from "./pages/MoviesPage"
 import MoviesDetailsPage from "./pages/MoviesDetailsPage.jsx"
 import Navbar from "./components/Navbar/Navbar.jsx"
 import MovieCast from "./components/MovieCast/MovieCast.jsx"
+import MovieReviews from "./components/MovieReviews/MovieReviews.jsx"
 
 
 
@@ -17,7 +18,7 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} /> 
         <Route path="/movies/:movieId" element={<MoviesDetailsPage />}>
          <Route path="cast" element={<MovieCast />} />
-         <Route path="reviews" element={<div>reviews</div>} />
+         <Route path="reviews" element={<MovieReviews />} />
         </Route>
 
 
