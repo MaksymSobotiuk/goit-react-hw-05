@@ -7,11 +7,14 @@ const MoviesList = ({ movies }) => {
 
   return (
     <ul>
-      {moviesArray.map(({ id, title }) => (
+      {moviesArray.map(({ id, title, movie }) => (
         <li key={id}>
-          <Link to={`/movies/${id}`} state={location}>
+          <div>
+            <Link to={`/movies/${id}`} state={location}>
             {title}
           </Link>
+          </div>
+          
         </li>
       ))}
     </ul>

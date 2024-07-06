@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useEffect, useState,  useRef } from "react";
+import { useParams, Link, Outlet } from "react-router-dom"
 import { GetSingleMovie} from "../api/GetMovies-api";
 
 function MoviesDetailsPage() {
     const { movieId } = useParams();
  const [movie, setMovie] = useState(null);
     const [isloading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+    const [error, setError] = useState(false);
+    const goBack = useRef(location.state ?? '/movies');
 
     useEffect(() => {
         const getData = async () => {
@@ -27,8 +28,11 @@ function MoviesDetailsPage() {
 
     return (
         
-        <div>{movie && (
+        <div>   <Link to={goBack.current}>
+        Go back
+      </Link> {movie && (
             <div>
+ 
                  <img
             src={
               movie.poster_path
@@ -38,9 +42,17 @@ function MoviesDetailsPage() {
             alt="Poster"
           />
              <h4>{movie.title}</h4>
-             <p>Overview: {movie.overview}</p>
-             </div>
-      )}</div>
+                    <p>Overview: {movie.overview}</p>
+                    <nav>
+                        <Link to='cast'>cast</Link>
+                        <Link to='reviews'>reviews</Link>
+                    </nav>
+                    <Outlet></Outlet>
+
+                </div>
+            )}
+        
+        </div>
     )
 }
 

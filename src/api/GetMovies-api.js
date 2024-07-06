@@ -29,3 +29,26 @@ export const GetSingleMovie = async (movieId) => {
 
   return response.data;
 };
+
+
+export const GetMovieCast = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/credits`, {
+    params: { client_id: key },
+    headers: {
+      Authorization: `Bearer ${autorizationKey}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const GetMovieReviews = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, {
+    params: { client_id: key },
+    headers: {
+      Authorization: `Bearer ${autorizationKey}`,
+    },
+  });
+
+  return response.data;
+};
