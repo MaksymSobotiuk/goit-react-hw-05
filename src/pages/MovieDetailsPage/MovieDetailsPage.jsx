@@ -1,9 +1,9 @@
 import { useEffect, useState,  useRef } from "react";
 import { useParams, Link, Outlet, useLocation, NavLink } from "react-router-dom"
 import { GetSingleMovie } from "../../api/GetMovies-api";
-import css from "./MoviesDetailsPage.module.css"
+import css from "./MovieDetailsPage.module.css"
 
-function MoviesDetailsPage() {
+function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const [isloading, setIsLoading] = useState(false);
@@ -66,10 +66,4 @@ function MoviesDetailsPage() {
 
 
 
-
-
-NavLink
-
-
-
-export default MoviesDetailsPage
+export default MovieDetailsPage

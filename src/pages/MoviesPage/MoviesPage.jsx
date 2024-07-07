@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MoviesList from '../../components/MovieList/MoviesList';
 import SearchFilms from '../../components/SearchFilms/SearchFilms';
@@ -16,6 +16,7 @@ function MoviesPage() {
     async function getData() {
       try {
         setIsLoading(true);
+        setError(false);
         const data = await searchMovieByName(movieFilter);
         setMovies(data);
       } catch (error) {
@@ -24,20 +25,21 @@ function MoviesPage() {
         setIsLoading(false);
       }
     }
-    getData();
-  }, [movieFilter]);
 
-  const filteredMovies = useMemo(() => {
-    return movies.filter(movie =>
-      movie.title.toLowerCase().includes(movieFilter.toLowerCase())
-    );
-  }, [movieFilter, movies]);
+    if (movieFilter) {
+      getData();
+    } else {
+      setMovies([]);
+    }
+  }, [movieFilter]);
 
   return (
     <div>
       <SearchFilms />
-      {filteredMovies.length > 0 && <MoviesList movies={filteredMovies} />}
-      {!filteredMovies.length > 0 && movieFilter && (
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error occurred while fetching movies.</p>}
+      {movies.length > 0 && <MoviesList movies={movies} />}
+      {!movies.length && movieFilter && !isLoading && !error && (
         <p>Information is absent</p>
       )}
     </div>

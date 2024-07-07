@@ -1,14 +1,13 @@
 import { Link, Route, Routes } from "react-router-dom"
 import { lazy, Suspense } from "react"
-
-import Navbar from "./components/Navbar/Navbar.jsx"
+import Navigation from "./components/Navigation/Navigation.jsx"
 
 
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.jsx'));
-const MoviesDetailsPage = lazy(() =>
-  import('./pages/MoviesDetailsPage/MoviesDetailsPage.jsx')
+const MovieDetailsPage = lazy(() =>
+  import('./pages/MovieDetailsPage/MovieDetailsPage.jsx')
 );
 const MovieCast = lazy(() => import('./components/MovieCast/MovieCast.jsx'));
 const MovieReviews = lazy(() =>
@@ -20,12 +19,12 @@ function App() {
 
   return (
       <>
-      <Navbar></Navbar>
+      <Navigation></Navigation>
       <Suspense fallback={null}>
     <Routes>
         <Route path="/" element={<HomePage/>} /> 
         <Route path="/movies" element={<MoviesPage />} /> 
-        <Route path="/movies/:movieId" element={<MoviesDetailsPage />}>
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
          <Route path="cast" element={<MovieCast />} />
          <Route path="reviews" element={<MovieReviews />} />
         </Route>

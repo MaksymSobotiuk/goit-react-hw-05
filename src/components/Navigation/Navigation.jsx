@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom"
-import css from "./Navbar.module.css"
+import css from "./Navigation.module.css"
 import clsx from "clsx"
 
 const getClassNames = ({ isActive }) => { return clsx(css.link, isActive && css.isActive) };
 
-function Navbar() { 
+function Navigation() { 
     return (
           <nav className={css.navigation}>
             <NavLink className={getClassNames} to='/'>Home</NavLink>
@@ -13,4 +13,4 @@ function Navbar() {
     )
 };
 
-export default Navbar
+export default Navigation
